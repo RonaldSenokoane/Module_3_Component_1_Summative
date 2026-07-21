@@ -4,7 +4,7 @@
 // ===========================================
 
 const runTasksButton = document.getElementById("runTasksButton");
-const outputElement = "";
+const outputElement = document.getElementById("outputElement");
 
 // ===========================================
 // DATA
@@ -22,32 +22,39 @@ export const marks = [45, 60, 85, 30, 95];
 export function addMark() {
     //add 70 to the end of the marks array
     // Return the updated marks array
-}
+    marks.push(70);
+    return marks;
+};
 
 // Task 2
 export function getMarksOver60() {
     // Return marks greater than 60
-}
+    return marks.filter(mark => mark > 60);
+};
 
 // Task 3
 export function increaseMarksBy5() {
     // Return a new array where each mark is increased by 5
-}
+    return marks.map(mark => mark + 5);
+};
 
 // Task 4
 export function getTotalMarks() {
     // Return the total of all marks
-}
+    return marks.reduce((total, mark) => total + mark);
+};
 
 // Task 5
 export function findFirstMarkOver80() {
     // Return the first mark greater than 80
-}
+     return marks.find(mark => mark > 80);
+};
 
 // Task 6
 export function sortMarksLowestToHighest() {
     // Return marks sorted from lowest to highest
-}
+    return [...marks].sort((a, b) => a - b);
+};
 
 // ===========================================
 // PROVIDED FUNCTIONS
@@ -65,7 +72,7 @@ export function displayResult(taskName, result) {
     }
 
     console.log(taskName, result);
-}
+};
 
 export function runTasks() {
 
@@ -80,11 +87,29 @@ export function runTasks() {
     displayResult("Task 5", findFirstMarkOver80());
     displayResult("Task 6", sortMarksLowestToHighest());
 
-}
+};
 
 // ===========================================
 // ADD EVENT LISTENER
 // SECTION A 
 // ===========================================
 
-runTasksButton
+runTasksButton.addEventListener("click", () => {
+    const updatedMarks = addMark();
+    console.log(updatedMarks);
+
+    const updateMarksOver60 = getMarksOver60();
+    console.log(updateMarksOver60);
+
+    const updateIncreaseMarksBy5 = increaseMarksBy5();
+    console.log(updateIncreaseMarksBy5);
+
+    const updateGetTotalMarks = getTotalMarks();
+    console.log(updateGetTotalMarks);
+
+    const updateFindFirstMarkOver80 = findFirstMarkOver80();
+    console.log(updateFindFirstMarkOver80);
+
+    const updateSortMarksLowestToHighest = sortMarksLowestToHighest();
+    console.log(updateSortMarksLowestToHighest);
+});
